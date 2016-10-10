@@ -1,0 +1,37 @@
+version: '2'
+
+services:
+  mysql_master:
+    container_name: mysql_master
+    build: ./mysql_master
+    ports:
+      - "3306:3306"
+    env_file:
+      - ./mysql_master/database_master.env
+    restart: always
+
+  mysql_slave:
+    container_name: mysql_slave
+    build: ./mysql_slave
+    ports:
+      - "3307:3306"
+    env_file:
+      - ./mysql_slave/database_slave.env
+    restart: always
+    depends_on:
+      - mysql_master
+
+  authoritative:
+    container_name: powerdns
+    build: ./powerdns
+    depends_on:
+      - mysql_master
+    ports:
+#      - "127.0.0.1:53:53/tcp"
+#      - "127.0.0.1:53:53/udp"
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "80:80"
+    env_file:
+      - ./mysql_master/database_master.env
+    restart: always
