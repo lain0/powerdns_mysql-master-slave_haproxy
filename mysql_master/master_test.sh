@@ -6,7 +6,7 @@ set -ex
 #DATABASE='powerdns'
 
 mysql -uroot -psecretrootpassword -h mysql_master -e "use mysql;CREATE USER replica@mysql_slave;
-GRANT REPLICATION SLAVE ON *.* TO ‘replica’@’mysql_slave’ IDENTIFIED BY ‘replica’;FLUSH PRIVILEGES;"
+GRANT REPLICATION SLAVE ON *.* TO replica@mysql_slave IDENTIFIED BY replica;FLUSH PRIVILEGES;"
 
 
 #mysqldump -uroot -psecretrootpassword --skip-lock-tables --single-transaction --flush-logs --hex-blob --master-data=2 -B powerdns  > /opt/dump.sql

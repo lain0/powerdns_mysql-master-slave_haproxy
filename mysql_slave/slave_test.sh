@@ -1,5 +1,6 @@
 #!/bin/bash
 # slave_test.sh
+set -ex
 # printf "\nSTART SLAVE; SHOW VARIABLES LIKE 'server_id';\n"
 
 #mysql -uroot -psecretrootpassword -h mysql_slave -e "START SLAVE;"

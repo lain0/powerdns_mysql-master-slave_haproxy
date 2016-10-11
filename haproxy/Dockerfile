@@ -1,2 +1,3 @@
 FROM haproxy
-COPY ./haproxy.cfg /etc/mysql/conf.d/
+
+COPY ./haproxy.cfg /usr/share/haproxy/
