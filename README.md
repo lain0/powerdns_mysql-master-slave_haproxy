@@ -1,7 +1,7 @@
 # powerdns_mysql-master-slave_haproxy
 
-./dodon.sh
+./docon.sh
 docker-compose build && docker-compose up
 
-.docoff.sh
+./docoff.sh
 docker-compose stop && docker-compose rm -f

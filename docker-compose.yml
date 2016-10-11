@@ -26,6 +26,8 @@ services:
     build: ./powerdns
     depends_on:
       - mysql_master
+#    links:
+#      - mysql_master
     ports:
 #      - "127.0.0.1:53:53/tcp"
 #      - "127.0.0.1:53:53/udp"
@@ -35,3 +37,9 @@ services:
     env_file:
       - ./mysql_master/database_master.env
     restart: always
+  haproxy:
+    container_name: haproxy
+    build: ./haproxy
+    depends_on:
+      - mysql_master
+      - mysql_slave
