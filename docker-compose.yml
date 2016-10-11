@@ -29,9 +29,9 @@ services:
     ports:
 #      - "127.0.0.1:53:53/tcp"
 #      - "127.0.0.1:53:53/udp"
-      - "53:53/tcp"
-      - "53:53/udp"
-      - "80:80"
+      - "5300:53/tcp"
+      - "5300:53/udp"
+      - "8000:80"
     env_file:
       - ./mysql_master/database_master.env
     restart: always
